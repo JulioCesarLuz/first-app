@@ -1,10 +1,14 @@
 const express = require("express");
+const routes = require("./routes");
 const app = express();
-const router = require("./routes");
-const app = express();
+const expressLayouts = require("express-ejs-layouts");
 
 const port = 3000;
 const address = "localhost";
+
+
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
 
 app.use('/', routes);
 
