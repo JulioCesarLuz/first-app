@@ -1,4 +1,4 @@
-
+let cadastro;
 
 function update(index,link){
     let tds = document.querySelectorAll(`td[data-index-row='${index}']`);
@@ -95,10 +95,50 @@ function update(index,link){
 
 }
 
-function remove(index,link){
-
-
-}
+function remove(index,name,link){ //(index,link)
+    //esconde todos os campos de exibição de dados do cadastro
+     // for(let cont=0;cont<tds.length;cont++){
+     //     if(tds[cont].className=="show"){
+     //         tds[cont].className="hidden";
+     //     } else{
+     //         tds[cont].className="show";
+     //     }
+     // }
+ 
+     //escuta se o botao foi clicado
+ 
+     const http = new XMLHttpRequest(); 
+     const url=link;
+ 
+     http.open("POST",link,true); 
+     http.setRequestHeader('Content-Type','application/json'); 
+ 
+     
+     dataToSend = JSON.stringify({name:name});
+ 
+     http.send(dataToSend);
+ 
+ 
+ 
+     http.onload = ()=>{ 
+         let resp = JSON.parse(http.response);
+         let tr = document.querySelector(`table#list > tbody > tr[data-index-row='${index}']`);
+ 
+         if (http.readyState === 4 && http.status === 200) {
+             tr.remove();
+             console.log(`Item ${index} removido com sucesso!`);
+ 
+         } else {
+             console.log(`Erro durante a tentativa de remoção do usuário: ${name}! Código do Erro: ${http.status}`); 
+         }
+         
+ 
+     }
+ }
+    
+ function add(data){
+     
+ }
    
 
    
