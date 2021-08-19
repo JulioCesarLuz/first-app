@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-html{
-    font-family: 'Open Sans', sans-serif;
+header{
+    font-family: 'Open Sans', sans-serif !important;
 }
+
+body{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+footer{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+
 .show{
     display:inline-flexbox;
 }
