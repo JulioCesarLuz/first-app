@@ -16,9 +16,9 @@ function update(index,link){
 
     linkUpdate.className='hidden';
     linkRemove.className='hidden';
-    tds[lenTds-2].className='show';
+    tds[lenTds-2].className='show'; 
 
-
+     
     for(let cont=0;cont<spans.length;cont++){
         if(spans[cont].className=="show"){
             spans[cont].className="hidden";
@@ -26,14 +26,14 @@ function update(index,link){
             spans[cont].className="show";
         }
     }
-
+    
     for(let cont=0;cont<inputs.length;cont++){
         if(inputs[cont].className=="hidden"){
             inputs[cont].className="show";
         }
     }
 
-
+    
     button.addEventListener('click',()=>{
         const http = new XMLHttpRequest(); 
         const url=link;
@@ -46,7 +46,7 @@ function update(index,link){
 
         http.setRequestHeader('Content-Type','application/json'); 
 
-
+        
         data.id = index;
         data.name = inputs[0].value;
         data.email = inputs[1].value;
@@ -71,7 +71,7 @@ function update(index,link){
                     }
                 }
     
- 
+                
                 for(let cont=0;cont<inputs.length;cont++){
                     if(inputs[cont].className=="show"){
                         inputs[cont].className="hidden";
@@ -82,10 +82,10 @@ function update(index,link){
                 linkRemove.className='show';
                 tds[lenTds-2].className='hidden';
         }
-
+   
 
     http.onreadystatechange = (e)=>{
-        if (http.readyState === 4 && http.status === 200) { 
+        if (http.readyState === 4 && http.status === 200) {
             console.log(http.responseText);
 
         }
@@ -95,54 +95,47 @@ function update(index,link){
 
 }
 
-function remove(index,name,link){ //(index,link)
-    //esconde todos os campos de exibição de dados do cadastro
-     // for(let cont=0;cont<tds.length;cont++){
-     //     if(tds[cont].className=="show"){
-     //         tds[cont].className="hidden";
-     //     } else{
-     //         tds[cont].className="show";
-     //     }
-     // }
- 
-     //escuta se o botao foi clicado
- 
-     const http = new XMLHttpRequest(); 
-     const url=link;
- 
-     http.open("POST",link,true); 
-     http.setRequestHeader('Content-Type','application/json'); 
- 
-     
-     dataToSend = JSON.stringify({name:name});
- 
-     http.send(dataToSend);
- 
- 
- 
-     http.onload = ()=>{ 
-         let resp = JSON.parse(http.response);
-         let tr = document.querySelector(`table#list > tbody > tr[data-index-row='${index}']`);
- 
-         if (http.readyState === 4 && http.status === 200) {
-             tr.remove();
-             console.log(`Item ${index} removido com sucesso!`);
- 
-         } else {
-             console.log(`Erro durante a tentativa de remoção do usuário: ${name}! Código do Erro: ${http.status}`); 
-         }
-         
- 
-     }
- }
+function remove(index,name,link){ 
+    for(let cont=0;cont<tds.length;cont++){
+        if(tds[cont].className=="show"){
+            tds[cont].className="hidden";
+        } else{
+            tds[cont].className="show";
+        }
+    }
+
+
+
+    const http = new XMLHttpRequest(); 
+    const url=link;
+
+    http.open("POST",link,true); 
+    http.setRequestHeader('Content-Type','application/json'); 
+
     
- function add(data){
-     
- }
+    dataToSend = JSON.stringify({name:name}); 
+
+    http.send(dataToSend);
+
+    
+
+    http.onload = ()=>{ 
+        let resp = JSON.parse(http.response);
+        
+        let tr = document.querySelector(`table#list > tbody > tr[data-index-row='${index}']`);
+
+        if (http.readyState === 4 && http.status === 200) {
+            tr.remove();
+            console.log(`Item ${index} removido com sucesso!`);
+
+        } else {
+            console.log(`Erro durante a tentativa de remoção do usuário: ${name}! Código do Erro: ${http.status}`); 
+        }
+        
+
+    }
+}
    
-
-   
-
-
-
-
+function add(data){
+    
+}

@@ -51,7 +51,7 @@ router.post('/cadastro/remove',(req,res)=>{
                 });
             }
         }
-    } 
+    }
 });
 
 router.post('/cadastro/update',(req,res)=>{
@@ -70,6 +70,10 @@ router.post('/cadastro/update',(req,res)=>{
 
 
 router.get('/cadastro/list',(req,res)=>{
+
+});
+
+router.post('/cadastro/addUser',(req,res)=>{
 
 });
 
