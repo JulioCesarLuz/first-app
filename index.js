@@ -15,7 +15,7 @@ let toggleBol=true;
 
 global.users =[]
 for (let cont=0;cont<20;cont++){
-    users.push({name:faker.name.findName(),email:faker.internet.email(),address:faker.address.streetAddress(),age:utils.getRandomByInterval(15,50,true),heigth:utils.getRandomByInterval(1.50,1.70,false).toFixed(2),vote:toggleBol});
+    users.push({name:faker.name.findName(),email:faker.internet.email(),address:faker.address.streetAddress(),age:utils.getRandomByInterval(15,50,true),height:utils.getRandomByInterval(1.50,1.70,false),vote:toggleBol});
     toggleBol=!toggleBol;
 }
 

@@ -4,11 +4,12 @@
  */
  let timers = require('timers');
 
- let getRandomByInterval = (min, max,isInt)=>{
+let getRandomByInterval = (min, max,isInt)=>{
     if(isInt==true){
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return (Math.floor(Math.random() * (max - min + 1)) + min);
+
     } else {
-        return (Math.random() * (max - min)) + min;
+        return parseFloat((Math.random() * (max - min)) + min).toFixed(2);
     }
 
  }

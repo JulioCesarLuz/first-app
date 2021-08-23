@@ -2,7 +2,7 @@
 
 <div class="jumbotron">
     <h2>Usuários Cadastrados</h2>
-    <p>Lista de usuários Cadastrados no sistema.</p>            
+    <p>Lista de usuários que fizeram seu cadastro no sistema "First App".</p>            
     <table class="table table-hover" id="list">
         <thead>
         <tr>
@@ -73,6 +73,7 @@
     </table>
 
     <h2>Cadastrar novo usuário</h2>
+    <p>Cadastre um novo usuário preenchendo as informações abaixo.</p>
 
     <form action="/cadastro/add" method="post">
         <div class="form-group">
@@ -91,7 +92,7 @@
         </div>
 
         <div class="form-group">
-            <label for="_heigth">Altura:</label>
+            <label for="_height">Altura:</label>
             <input type="text" name="_heigth" id="_heigth" class="form-control">
         </div>
 
@@ -110,4 +111,67 @@
         </div>
 
     </form>
+
+    <div class="jumbotron">
+        <h2>Lista de usuários cadastrados.</h2>
+        <p>Informações em lista de usuários que fizeram o cadastro na aplicação "First App".</p>            
+        <table class="table table-hover" id="list">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Email</th>
+                <th>Idade</th>
+                <th>Altura</th>
+                <th>Vota?</th>
+            </tr>
+            </thead>
+            <tbody>
+                  
+    
+                <% let linkList="/cadastro/list/"; %>
+    
+                <% if(users.length >0){%>
+                    <% for(let index=0;index<users.length;index++){ %>
+                        <tr data-index-row="<%= index %>">
+                            
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].name %></span>
+                            <input type="text" name="name"  class="hidden" value="<%= users[index].name %>">
+                        </td>
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].email %></span>
+                            <input type="text" name="email"  class="hidden" value="<%= users[index].email %>">
+                        </td>
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].address %></span>
+                            <input type="text" name="address"  class="hidden" value="<%= users[index].address %>">
+                        </td>
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].age %></span>
+                            <input type="text" name="age"  class="hidden" value="<%= users[index].age %>">
+                            
+                        </td>
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].height %></span>
+                            <input type="text" name="height"  class="hidden" value="<%= users[index].height %>">
+                            
+                        </td>
+                        <td data-index-row="<%=index%>">
+                            <span  class="show"><%= users[index].vote %></span>
+                            <input type="text" name="vote" class="hidden" value="<%= users[index].vote %>">
+                            
+                        </td>
+                        <td data-index-row="<%=index%>" class="hidden" data-index-row="<%=index%>">
+                            <input type="button" value="Atualizar" class="hidden" >
+                        </td>
+                      
+                        </tr>
+                    <% } //for %>
+                <% }else{%>
+                    <tr><td colspan="7"><p class="bg-info text-white">Nenhum usuário cadastrado</p></td></tr>
+                <%} //If-Else %>   
+            </tbody>
+        </table>
+    
 </div>

@@ -74,7 +74,7 @@ router.get('/cadastro/list',(req,res)=>{
 });
 
 router.post('/cadastro/add',(req,res)=>{
-    let user={name:"",email:"",address:"",heigth:"",age:"",vote:""};
+    let user={name:"",email:"",address:"",height:"",age:"",vote:""};
 
     user.name = req.body._name;
     user.email = req.body._email;
