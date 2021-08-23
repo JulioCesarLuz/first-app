@@ -63,9 +63,9 @@ router.post('/cadastro/update',(req,res)=>{
     users[req.body.id].height=req.body.height;
     users[req.body.id].vote=req.body.vote;
 
+    res.sendStatus(200);
     console.log("Dados recebidos: ",req.body);
 
-    res.sendStatus(200);
 });
 
 
@@ -73,7 +73,20 @@ router.get('/cadastro/list',(req,res)=>{
 
 });
 
-router.post('/cadastro/addUser',(req,res)=>{
+router.post('/cadastro/add',(req,res)=>{
+    let user={name:"",email:"",address:"",heigth:"",age:"",vote:""};
+
+    user.name = req.body._name;
+    user.email = req.body._email;
+    user.address = req.body._address;
+    user.heigth = req.body._heigth;
+    user.age = req.body._age;
+    user.vote = req.body._vote;
+
+    users.push(user);
+    console.log("Usuário cadastrado: ",user);
+    console.log("Lista dos usuários: ",users)
+    res.sendStatus(200);
 
 });
 
