@@ -7,10 +7,17 @@ const { urlencoded } = require("express");
 const port = 3000;
 const address = "localhost";
 
-global.users =[
-    {name:"Júlio C. L. G. Costa",address:"Rua do SMD, 1337",email:"juliocesarluz@alu.ufc.br",age:19,height:1.83,vote:true},
-    {name:"Caio Vinicius Bezerra Abreu",address:"Rua da Beleza, 777",email:"caiao@virtual.ufc.br",age:19,height:1.75,vote:true},
-    {name:"Jhonatan dos Santos Bastos",address:"Rua do A A Follow, 2331",email:"joaonathan@virtual.ufc.br",age:19,height:1.70,vote:true}];
+const utils = require("./utils");
+
+const faker = require("faker"); 
+
+let toggleBol=true;
+
+global.users =[]
+for (let cont=0;cont<20;cont++){
+    users.push({name:faker.name.findName(),email:faker.internet.email(),address:faker.address.streetAddress(),age:utils.getRandomByInterval(15,50,true),heigth:utils.getRandomByInterval(1.50,1.70,false).toFixed(2),vote:toggleBol});
+    toggleBol=!toggleBol;
+}
 
 
 app.use(express.urlencoded({extended:false})); 

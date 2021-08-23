@@ -1,5 +1,6 @@
 let cadastro;
 
+
 function update(index,link){
     let tds = document.querySelectorAll(`td[data-index-row='${index}']`);
     let spans = document.querySelectorAll(`td[data-index-row='${index}'] > span`);
@@ -36,23 +37,30 @@ function update(index,link){
     
     button.addEventListener('click',()=>{
         const http = new XMLHttpRequest(); 
-        const url=link;
-        let data = {id:"",name:"",email:"",address:"",age:"",height:"",vote:""};
+        const url=link; 
+        let data = {id:"",name:"",email:"",address:"",age:"",heigth:"",vote:""};
         let dataToSend;
 
 
 
-        http.open("POST",link,true); 
+        http.open("POST",link,true);
+       
 
+       
         http.setRequestHeader('Content-Type','application/json'); 
-
-        
-        data.id = index;
+         
+        for(let cont=0;cont<inputs.length;cont++){ 
+            if(inputs[cont].disabled==true){
+                inputs[cont].disabled=false;
+            } else inputs[cont].disabled=true;
+        }
+   
+        data.id = index; 
         data.name = inputs[0].value;
         data.email = inputs[1].value;
         data.address = inputs[2].value;
         data.age = inputs[3].value;
-        data.height = inputs[4].value;
+        data.heigth = inputs[4].value;
         data.vote = inputs[5].value;
 
         dataToSend = JSON.stringify(data); 
@@ -60,8 +68,10 @@ function update(index,link){
         http.send(dataToSend);
 
       
+        http.onload = ()=>{ 
 
-        http.onload = ()=>{                
+
+            if (http.readyState === 4 && http.status === 200) { 
                 for(let cont=0;cont<spans.length;cont++){
                     if(spans[cont].className=="hidden"){
                         spans[cont].innerHTML = inputs[cont].value;
@@ -70,40 +80,31 @@ function update(index,link){
                         spans[cont].className="hidden";
                     }
                 }
-    
+
                 
                 for(let cont=0;cont<inputs.length;cont++){
                     if(inputs[cont].className=="show"){
                         inputs[cont].className="hidden";
+                        if(inputs[cont].disabled==false){
+                            inputs[cont].disabled=true;
+                        }
                     }
                 }
-    
+
                 linkUpdate.className='show';
                 linkRemove.className='show';
                 tds[lenTds-2].className='hidden';
+            } else {
+
+                console.log("Ocorreu erro no processamento dos dados no servidor: ",http.responseText);
+            }     
         }
-   
-
-    http.onreadystatechange = (e)=>{
-        if (http.readyState === 4 && http.status === 200) {
-            console.log(http.responseText);
-
-        }
-    }
-
+  
     });  
 
 }
 
 function remove(index,name,link){ 
-    for(let cont=0;cont<tds.length;cont++){
-        if(tds[cont].className=="show"){
-            tds[cont].className="hidden";
-        } else{
-            tds[cont].className="show";
-        }
-    }
-
 
 
     const http = new XMLHttpRequest(); 
@@ -113,14 +114,13 @@ function remove(index,name,link){
     http.setRequestHeader('Content-Type','application/json'); 
 
     
-    dataToSend = JSON.stringify({name:name}); 
+    dataToSend = JSON.stringify({name:name});
 
     http.send(dataToSend);
 
-    
+   
 
     http.onload = ()=>{ 
-        let resp = JSON.parse(http.response);
         
         let tr = document.querySelector(`table#list > tbody > tr[data-index-row='${index}']`);
 
