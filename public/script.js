@@ -60,7 +60,7 @@ function update(index,link){
         data.email = inputs[1].value;
         data.address = inputs[2].value;
         data.age = inputs[3].value;
-        data.heigth = inputs[4].value;
+        data.height = inputs[4].value;
         data.vote = inputs[5].value;
 
         dataToSend = JSON.stringify(data); 
@@ -194,7 +194,7 @@ function add(index,link){
         data.email = inputs[1].value;
         data.address = inputs[2].value;
         data.age = inputs[3].value;
-        data.heigth = inputs[4].value;
+        data.height = inputs[4].value;
         data.vote = inputs[5].value;
 
         dataToSend = JSON.stringify(data); 
@@ -202,7 +202,7 @@ function add(index,link){
         http.send(dataToSend);
 
       
-        window.onload = ()=>{ 
+        http.onload = ()=>{ 
 
 
             if (http.readyState === 4 && http.status === 200) { 

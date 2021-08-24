@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+let alert = require('alert');
 
 
 
@@ -79,14 +80,15 @@ router.post('/cadastro/add',(req,res)=>{
     user.name = req.body._name;
     user.email = req.body._email;
     user.address = req.body._address;
-    user.heigth = req.body._heigth;
+    user.height = req.body._height;
     user.age = req.body._age;
     user.vote = req.body._vote;
 
     users.push(user);
     console.log("Usuário cadastrado: ",user);
-    console.log("Lista dos usuários: ",users)
-    res.sendStatus(200);
+    console.log("Lista dos usuários: ",users);
+    alert("O usuário foi cadastrado com sucesso!");
+    res.render('pages/cadastro');
 
 });
 
