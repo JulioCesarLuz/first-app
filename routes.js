@@ -3,10 +3,6 @@ const router = express.Router();
 let alert = require('alert');
 
 
-
-//let db = require("/.db");
-// db.criarDB("minhaBaseDados");
-
 router.use(express.static('public'));
 
 router.get('/', (req,res)=>{
@@ -87,7 +83,7 @@ router.post('/cadastro/add',(req,res)=>{
     users.push(user);
     console.log("Usuário cadastrado: ",user);
     console.log("Lista dos usuários: ",users);
-    alert("O usuário foi cadastrado com sucesso!");
+    alert("O usuário foi cadastrado com sucesso!"); //Uso da função "alert", instalada a partir do código "npm install alert" no terminal.
     res.render('pages/cadastro');
 
 });
