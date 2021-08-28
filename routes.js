@@ -65,11 +65,6 @@ router.post('/cadastro/update',(req,res)=>{
 
 });
 
-
-router.get('/cadastro/list',(req,res)=>{
-
-});
-
 router.post('/cadastro/add',(req,res)=>{
     let user={name:"",email:"",address:"",height:"",age:"",vote:""};
 
@@ -93,3 +88,11 @@ router.get('/about',(req,res)=>{
 });
 
 module.exports = router;
+
+router.get('/lista', (req,res)=>{
+    res.render('pages/lista');
+});
+
+router.get('/lista/show', (req,res)=>{
+    res.status(200).send(JSON.stringify(users));
+});
