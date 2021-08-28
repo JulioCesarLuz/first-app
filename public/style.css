@@ -24,3 +24,54 @@ footer{
     display:inline-block;
     transform: rotate(180deg);
   }
+
+.nav-link:hover {
+    
+    background:#f8f9fa;
+    padding: 4px 0;
+    
+}
+
+.nav-link:link{
+    color:#fff;
+    font-size: 120%;
+    font-weight:bold;
+}
+
+
+
+.nav-link:active{
+    font-weight: bold;
+    color: #f8f9fa;
+
+}
+
+
+
+.size{
+    display: table-row;
+    grid: col-xs-6;
+}
+
+.clear{
+    clear: both;
+}
+.p{
+    text-indent: 30px;
+   
+}
+.div{
+    width: 600px;
+    height: 800px;
+    padding-left: 30px;
+    text-align: justify;
+    padding-top: 50px;
+}
+
+
+a:hover{
+    background:#f8f9fa;
+    padding: 4px 0;
+    color: #fff;
+    text-decoration: none;
+}

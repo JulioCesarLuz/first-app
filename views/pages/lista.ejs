@@ -1,0 +1,28 @@
+
+
+
+<%- contentFor( 'body' ) %>
+
+<div style="text-align: left;">
+    <span></span>
+    <h2>Lista de usuários cadastrados.</h2>
+    <p>Informações em lista de usuários que fizeram o cadastro na aplicação "First App".</p>  
+</div>
+
+<div class="table-responsive-xl">     
+    <table class="table table-hover bg-light" id="lista">
+        <thead class="bg-primary">
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Idade</th>
+            <th>Altura</th>
+            <th>Vota?</th>
+        </tr>
+        </thead>
+    </table>
+
+    <script src="script.js"></script>
+    <script>window.onload = lista('/lista/show');</script>
+</div>
